@@ -10,7 +10,7 @@ Metasploit integration classes and modules
 import subprocess
 import os
 
-class msf_command:
+class msfCommand:
     '''
     Parent command class for building and executing Metasploit framework commands
     '''
@@ -43,7 +43,7 @@ class msf_command:
             else:
                 subprocess.Popen(strCommand, shell=True).wait()
         
-class msfconsole_command(msf_command):
+class msfconsoleCommand(msfCommand):
     '''
     Commands are built and piped via console similar to a resource file so multiple
     Handlers and exploits can be executed in a single thread
@@ -106,7 +106,7 @@ if __name__ == '__main__':
     #get_msf_path()
     
     #spawn a test generic handler as a command
-    myCommand = msfconsole_command("use exploit/multi/handler",
+    myCommand = msfconsoleCommand("use exploit/multi/handler",
                                    "set PAYLOAD windows/meterpreter/reverse_https",
                                    "set LHOST 127.0.0.1",
                                    "set ExitOnSession false",
