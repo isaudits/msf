@@ -65,7 +65,7 @@ class msfconsole_command(msf_command):
         '''
         Build command attribute based on arguments passed and return as a string
         '''
-        cmd = "'"                               #msfconsole -x needs command args in quotes
+        cmd = "'"                               #msfconsole -x needs command args in quotes separated by ;
         for commandLine in commandLines[:]:     #cast args as a list and loop
             cmd += commandLine+";"
         cmd += "'"
