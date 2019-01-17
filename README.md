@@ -17,8 +17,8 @@ This is a work in process to simplify and expedite execution of Metasploit
 commands from Python when it is unnecessary for more complex functionality such
 as MSFRPC. Currently consists of:
 
--a parent class to handle executing metasploit commands 
--subclasses for direct interaction in your code
+- a parent class to handle executing metasploit commands 
+- subclasses for direct interaction in your code
 
 Current functionality is limited to parsing and executing an msfconsole command
 using the msfconsole_command class:
